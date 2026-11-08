@@ -607,7 +607,7 @@ async function executeLiveSuite(config, targetName, suiteName, suiteDir, slug, l
 
 	const checks = [
 		{ id: "live-exit-zero", fn: () => result.code === 0 },
-		{ id: "bundle-extracted", fn: () => bundle.ok },
+		{ id: "bundle-extracted", fn: () => bundle.ok, error: `extraction ${bundle.extraction}` },
 		{ id: "live-status-ok", fn: () => status?.ok === true },
 		{ id: "cursor-no-fast", fn: () => readJson(resolve(liveArtifactDir, "pi-command.json"))?.args?.includes("--cursor-no-fast") === true },
 		{ id: "cursor-model", fn: () => readJson(resolve(liveArtifactDir, "pi-command.json"))?.args?.includes(config.cursorModel) === true },

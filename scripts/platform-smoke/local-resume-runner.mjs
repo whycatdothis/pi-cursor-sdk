@@ -126,7 +126,7 @@ export async function executeLocalResumeSuite(
 
 	const checks = [
 		{ id: "local-resume-exit-zero", fn: () => result.code === 0 },
-		{ id: "local-resume-bundle-extracted", fn: () => bundle.ok },
+		{ id: "local-resume-bundle-extracted", fn: () => bundle.ok, error: `extraction ${bundle.extraction}` },
 		{ id: "local-resume-session-evidence", fn: () => evidence.sessionFiles > 0 },
 		{ id: "local-resume-debug-evidence", fn: () => evidence.debugFiles > 0 },
 		{ id: "local-resume-runtime-evidence", fn: () => evidence.runtimeFiles > 0 },

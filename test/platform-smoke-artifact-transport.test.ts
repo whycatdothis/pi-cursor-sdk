@@ -165,6 +165,7 @@ describe("platform smoke artifact transport", () => {
 			const files = Object.entries(inputs).map(([path, text]) => ({ path, size: Buffer.byteLength(text), contentBase64: Buffer.from(text).toString("base64") }));
 			const result = extractPlatformArtifactBundle(root, formatPlatformArtifactBundle({ files }));
 			expect(result.ok).toBe(false);
+			expect(result.extraction).toBe(process.platform === "win32" ? "rejected" : "committed");
 			if (process.platform === "win32") return;
 			for (const [path, content] of Object.entries(inputs)) expect(readFileSync(join(root, path), "utf8")).toBe(content);
 			expect(scanArtifacts(root)).toContainEqual({ file: "metadata.json", violation: "invalid JSON" });
