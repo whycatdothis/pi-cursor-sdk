@@ -445,8 +445,7 @@ console.log(JSON.stringify({ rollback, exhausted, spawn: { outcome, files: readd
 		writeFileSync(join(out, "existing.txt"), "existing");
 		// The owner may mark a macOS directory append-only: entries can be created in it but not removed.
 		// Linux reserves the equivalent attribute for CAP_LINUX_IMMUTABLE, so this check is macOS-only.
-		const setFlag = (flag: string) => expect(spawnSync("chflags", [flag, appendOnly], { encoding: "utf8" }).status).toBe(0);
-		setFlag("uappnd");
+		expect(spawnSync("chflags", ["uappnd", appendOnly], { encoding: "utf8" }).status).toBe(0);
 		try {
 			// Calling the native writer directly lets its exclusive create, not host preflight, hit the existing file.
 			const outcome = writeExtractedFilesAnchored(out, [
@@ -458,7 +457,7 @@ console.log(JSON.stringify({ rollback, exhausted, spawn: { outcome, files: readd
 			expect(readdirSync(appendOnly)).toEqual(["created.txt"]);
 			expect(readFileSync(join(out, "existing.txt"), "utf8")).toBe("existing");
 		} finally {
-			setFlag("nouappnd");
+			expect.soft(spawnSync("chflags", ["nouappnd", appendOnly], { encoding: "utf8" }).status).toBe(0);
 		}
 	});
 
