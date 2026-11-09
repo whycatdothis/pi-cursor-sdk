@@ -8,6 +8,19 @@
 
 - Report platform-smoke artifact extraction outcomes truthfully. The native extractor previously exited with the same status whether it created nothing, removed every entry it created, or could not remove an entry it created, and the host reported each case as the same `ok: false`. `extractPlatformArtifactBundle()` now also returns `extraction` (`committed`, `rejected`, `rolled-back`, `rollback-incomplete` or `unknown`), and the suite's bundle-extraction check records it in `failures.md`, so a failed suite says whether partial bundle files may remain. Rollback still removes only entries whose identity is unchanged, and Windows controllers still reject nonempty bundles before writing.
 
+## 0.5.22 - 2026-11-08
+
+<!-- npm-release:unreleased:start -->
+<!-- npm-release:unreleased:end -->
+
+- fix: share each session store close outcome (#413) ([727e6e5](https://github.com/fitchmultz/pi-cursor-sdk/commit/727e6e51ff676dc11188213919c3b7e393a1484e))
+
+### What's Changed
+* fix: share each session-store close outcome by @fitchmultz in https://github.com/fitchmultz/pi-cursor-sdk/pull/413
+
+
+**Full Changelog**: https://github.com/fitchmultz/pi-cursor-sdk/compare/v0.5.21...v0.5.22
+
 ## 0.5.21 - 2026-11-08
 
 <!-- npm-release:unreleased:start -->
