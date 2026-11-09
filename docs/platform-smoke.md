@@ -233,10 +233,12 @@ scripts/platform-smoke/doctor.mjs
 scripts/platform-smoke/jsonl-text.mjs
 scripts/platform-smoke/live-suite-runner.mjs
 scripts/platform-smoke/local-resume-runner.mjs
+scripts/platform-smoke/local-resume-suites.d.mts
 scripts/platform-smoke/local-resume-suites.mjs
 scripts/platform-smoke/platform-build-windows.ps1
 scripts/platform-smoke/pty-capture.mjs
 scripts/platform-smoke/render-ansi.mjs
+scripts/platform-smoke/scenarios.d.mts
 scripts/platform-smoke/scenarios.mjs
 scripts/platform-smoke/target-runtime.mjs
 scripts/platform-smoke/targets.mjs
